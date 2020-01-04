@@ -122,4 +122,4 @@ STATIC_URL = '/static/'
 try:
     from ting.local_settings import *
 except ModuleNotFoundError:
-    pass
+    print('WARNING! You are running default settings.')
