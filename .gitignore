@@ -8,3 +8,5 @@ __pycache__/
 *.sqlite3
 
 ting/local_settings.py
+
+midas/migrations/
