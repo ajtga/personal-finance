@@ -13,11 +13,18 @@ class MovementMethod(models.Model):
 
 
 class MovementType(models.Model):
+    TYPES = (
+        ('payment', 'Payment'),
+        ('salary', 'Salary'),
+        ('withdraw', 'Withdraw'),
+        ('loan', 'Loan')
+    )
     SIGN_OPTIONS = (
         (1, 'Credit'),
         (-1, 'Debit'),
     )
-    name = models.CharField(primary_key=True, max_length=255)
+
+    name = models.CharField(primary_key=True, choices=TYPES)
     description = models.CharField(max_length=255, verbose_name='movement type description')
     sign = models.IntegerField(default=1, choices=SIGN_OPTIONS)
 
