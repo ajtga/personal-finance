@@ -9,7 +9,7 @@ class MovementMethod(models.Model):
         ('transfer', 'Transfer'),
         ('cash', 'Cash'),
     )
-    name = models.CharField(primary_key=True, choices=METHODS)
+    name = models.CharField(primary_key=True, max_length=15, choices=METHODS)
 
 
 class MovementType(models.Model):
@@ -24,7 +24,7 @@ class MovementType(models.Model):
         (-1, 'Debit'),
     )
 
-    name = models.CharField(primary_key=True, choices=TYPES)
+    name = models.CharField(primary_key=True, max_length=10, choices=TYPES)
     description = models.CharField(max_length=255, verbose_name='movement type description')
     sign = models.IntegerField(default=1, choices=SIGNS)
 
@@ -73,7 +73,7 @@ class AccountType(models.Model):
         ('savings', 'Savings account'),
         ('payments', 'Payments account'),
     )
-    name = models.CharField(primary_key=True, choices=TYPES)
+    name = models.CharField(primary_key=True, max_length=10, choices=TYPES)
 
 
 class Account(models.Model):
