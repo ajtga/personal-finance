@@ -139,6 +139,7 @@ class MovementBy(models.Model):
     bridge_id = models.AutoField(primary_key=True)
     movement = models.ForeignKey(Movement, on_delete=models.CASCADE)
     affiliation = models.ForeignKey(Affiliation, on_delete=models.CASCADE)
+    is_movement_lead = models.BooleanField(default=True, verbose_name='is the affiliate leading this movement?')
 
     class Meta:
         verbose_name_plural = "Movement by's"
