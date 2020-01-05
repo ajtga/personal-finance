@@ -53,9 +53,9 @@ class Currency(models.Model):
 
 class AccountType(models.Model):
     TYPES = (
-        ('Checking', 'Checking account'),
-        ('Savings', 'Savings account'),
-        ('Payments', 'Payments account'),
+        ('checking', 'Checking account'),
+        ('savings', 'Savings account'),
+        ('payments', 'Payments account'),
     )
     name = models.CharField(primary_key=True, choices=TYPES)
 
