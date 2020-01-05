@@ -19,14 +19,14 @@ class MovementType(models.Model):
         ('withdraw', 'Withdraw'),
         ('loan', 'Loan')
     )
-    SIGN_OPTIONS = (
+    SIGNS = (
         (1, 'Credit'),
         (-1, 'Debit'),
     )
 
     name = models.CharField(primary_key=True, choices=TYPES)
     description = models.CharField(max_length=255, verbose_name='movement type description')
-    sign = models.IntegerField(default=1, choices=SIGN_OPTIONS)
+    sign = models.IntegerField(default=1, choices=SIGNS)
 
 
 class Category(models.Model):
