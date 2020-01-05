@@ -32,16 +32,25 @@ class Person(models.Model):
     first_name = models.CharField(max_length=255, verbose_name='first name')
     last_name = models.CharField(max_length=255, verbose_name='last name')
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
 
 class Group(models.Model):
     group_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, verbose_name='group name')
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class AccountHolder(models.Model):
     holder_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, verbose_name='account holder name')
     code = models.CharField(max_length=3, verbose_name='account holder code')
+
+    def __str__(self):
+        return f'{self.name} - {self.code}'
 
 
 class Currency(models.Model):
@@ -70,11 +79,17 @@ class Account(models.Model):
     agency_number = models.CharField(max_length=5, verbose_name='account agency number')
     type = models.ForeignKey(AccountType, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.name} - R$ {self.current_balance}'
+
 
 class Affiliation(models.Model):
     affiliation_id = models.AutoField(primary_key=True)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.person.first_name} from {self.group.name}'
 
 
 class MonthlyBalance(models.Model):
