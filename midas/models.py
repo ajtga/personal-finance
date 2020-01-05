@@ -2,7 +2,14 @@ from django.db import models
 
 
 class MovementMethod(models.Model):
-    name = models.CharField(primary_key=True, max_length=255)
+    METHODS = (
+        ('debit card', 'Debit Card'),
+        ('account debit', 'Account Debit'),
+        ('credit card', 'Credit Card'),
+        ('transfer', 'Transfer'),
+        ('cash', 'Cash'),
+    )
+    name = models.CharField(primary_key=True, choices=METHODS)
 
 
 class MovementType(models.Model):
