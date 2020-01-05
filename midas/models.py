@@ -30,11 +30,17 @@ class MovementType(models.Model):
 
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     category_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, verbose_name='category name')
 
 
 class Person(models.Model):
+    class Meta:
+        verbose_name_plural = 'People'
+
     person_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=255, verbose_name='first name')
     last_name = models.CharField(max_length=255, verbose_name='last name')
@@ -61,6 +67,9 @@ class AccountHolder(models.Model):
 
 
 class Currency(models.Model):
+    class Meta:
+        verbose_name_plural = 'Currencies'
+
     currency_id = models.AutoField(primary_key=True)
     iso_code = models.CharField(max_length=3, verbose_name='ISO 4217 code')
     symbol = models.CharField(max_length=255, verbose_name='currency symbol')
@@ -107,6 +116,9 @@ class MonthlyBalance(models.Model):
 
 
 class Subcategory(models.Model):
+    class Meta:
+        verbose_name_plural = 'Subategories'
+
     subcategory_id = models.AutoField(primary_key=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, verbose_name='subcategory name')
