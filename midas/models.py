@@ -44,13 +44,24 @@ class Currency(models.Model):
     name = models.CharField(max_length=255, verbose_name='currency name')
 
 
+class AccountType(models.Model):
+    TYPES = (
+        ('Checking', 'Checking account'),
+        ('Savings', 'Savings account'),
+        ('Payments', 'Payments account'),
+    )
+    name = models.CharField(primary_key=True, choices=TYPES)
+
+
 class Account(models.Model):
     account_id = models.AutoField(primary_key=True)
-    holder = models.ForeignKey(AccountHolder, on_delete=models.CASCADE)
+    holder = models.ForeignKey(AccountHolder, on_delete=models.CASCADE)  # TODO: certain holders only offer payments account type, create a form to validate this
     current_balance = models.FloatField(verbose_name='current balance')
     last_updated = models.DateTimeField(verbose_name='last balance update')
     name = models.CharField(max_length=255, verbose_name='account name')
-    # TODO: add account data (number, type, etc)
+    number = models.CharField(max_length=11, verbose_name='account number')
+    agency_number = models.CharField(max_length=5, verbose_name='account agency number')
+    type = models.ForeignKey(AccountType, on_delete=models.CASCADE)
 
 
 class Affiliation(models.Model):
